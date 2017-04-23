@@ -8,11 +8,6 @@ public class Helium extends Elements {
         super(2, 4.0026, "Helium");
     }
 
-    @Override
-    public double molesToGrams() {
-        System.out.println("You have " + super.molesToGrams() + " grams of " + getName());
-        return 1;
-    }
 
     @Override
     public double gramsToMoles() {
