@@ -23,6 +23,8 @@ public class Main {
         Elements elementsInstance = new Elements();
         ArrayList<Elements> elements = elementsInstance.getElements();
 
+        System.out.println(elementsInstance.getElements().get(1));
+
         boolean quit = false;
         printMainMenu();
         while (!quit) {
@@ -44,17 +46,27 @@ public class Main {
                 case 1:
 //                    Convert moles to grams
                     System.out.println("Which element? (Atomic Number)");
+                try {
                     int elementChoice = scanner.nextInt();
 
                     try {
-                   //     elements=null;
+                        //     elements=null;
                         elements.get(elementChoice).molesToGrams();
                     } catch (InputMismatchException f) {
                         System.out.println("Invalid input type");
-                    }  catch (Exception e) {
+                    } catch (ArrayIndexOutOfBoundsException f) {
+                        System.out.println("Out of bounds error 1");
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
-                        System.out.println("Invalid input type" + "\n");
+                        System.out.println("Invalid input type wrong message" + "\n");
                     }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Out of bounds error");
+                } catch (InputMismatchException f) {
+                    System.out.println("Invalid element input type");
+                } catch (Exception f) {
+                    System.out.println("Some other type of error");
+                }
 //                      molesToGramsMenu();
                     break;
 
