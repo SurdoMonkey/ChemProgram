@@ -44,30 +44,41 @@ public class Main {
                     quit = true;
                     break;
                 case 1:
-//                    Convert moles to grams
-                    System.out.println("Which element? (Atomic Number)");
-                try {
-                    int elementChoice = scanner.nextInt();
 
-                    try {
-                        //     elements=null;
-                        elements.get(elementChoice).molesToGrams();
-                    } catch (InputMismatchException f) {
-                        System.out.println("Invalid input type");
-                    } catch (ArrayIndexOutOfBoundsException f) {
-                        System.out.println("Out of bounds error 1");
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                        System.out.println("Invalid input type wrong message" + "\n");
+                    boolean quit1 = false;
+                    while(!quit1) {
+
+                        scanner = new Scanner(System.in);
+                        System.out.println("Which element? (Atomic Number)");
+                        int elementChoice;
+                        try {
+                            elementChoice = scanner.nextInt();
+                            quit1 = true;
+                            boolean quit2 = false;
+
+                            while (!quit2) {
+                                try {
+                                    if (elementChoice <= elements.size() && elementChoice >= 0) {
+                                        elements.get(elementChoice).molesToGrams();
+                                        quit2 = true;
+                                    } else {
+                                        System.out.println("Element does not exist");
+                                        quit2 = true;
+                                        quit1 = false;
+                                    }
+                                } catch (InputMismatchException f) {
+                                    System.out.println("Invalid input type");
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                    System.out.println("Invalid input type wrong message" + "\n");
+                                }
+                            }
+                        } catch (InputMismatchException f) {
+                            System.out.println("Invalid element input type");
+                        } catch (Exception f) {
+                            System.out.println("Some other type of error");
+                        }
                     }
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Out of bounds error");
-                } catch (InputMismatchException f) {
-                    System.out.println("Invalid element input type");
-                } catch (Exception f) {
-                    System.out.println("Some other type of error");
-                }
-//                      molesToGramsMenu();
                     break;
 
                 case 2:
