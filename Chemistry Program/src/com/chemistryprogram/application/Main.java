@@ -115,43 +115,55 @@ public class Main {
                 case 3:
                     boolean quit3 = false;
                     while (!quit3) {
-                        System.out.println("Enter file name.");
+                        System.out.print("Enter file name:");
+                        filename = scanner.nextLine();
                         try {
-                            filename = scanner.nextLine();
                             MultipleChoiceTestAssessment multipleChoiceTestAssessment = new MultipleChoiceTestAssessment(filename + ".txt");
-                            printAssessmentMenu();
                             quit3 = true; //for a future invalid submission checking for the test assessment
                             boolean quit4 = false;
                             while (!quit4) {
-                                System.out.println("Make selection:");
                                 try {
+                                    printAssessmentMenu();
+                                    System.out.println("Make selection:");
                                     selection = scanner.nextInt();
                                     switch (selection) {
                                         case 0:
+                                            quit4 = true;
+                                            quit3 = true;
+                                            break;
+                                        case 1:
                                             multipleChoiceTestAssessment.gradeTest();
                                             quit4 = true;
                                             break;
-                                        case 1:
+                                        case 2:
                                             multipleChoiceTestAssessment.printTest();
                                             quit4 = true;
                                         default:
                                             System.out.println("Not an option");
+                                            quit3 = false;
+                                            quit4 = true;
                                             break;
                                     }
                                 } catch (InputMismatchException f) {
                                     System.out.println("Invalid input type");
+                                    quit4 = true;
+                                    quit3 = false;
                                 } catch (Exception e) {
                                     System.out.println(e.getMessage());
                                     System.out.println("Invalid input type wrong message" + "\n");
+                                    quit4 = true;
+                                    quit3 = false;
                                 }
                             }
-                            break;
+
                         } catch (InputMismatchException f) {
                             System.out.println("Invalid element input type");
                         } catch (Exception f) {
                             System.out.println("Some other type of error");
                         }
-                    }
+
+                   }
+                    break;
             }
         }
 
