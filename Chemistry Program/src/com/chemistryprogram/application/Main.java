@@ -91,7 +91,7 @@ public class Main {
                             while (!quit3) {
                                 try {
                                     if (elementChoice <= elements.size() && elementChoice >= 0) {
-                                        elements.get(elementChoice).molesToGrams();
+                                        elements.get(elementChoice).gramstoMoles();
                                         quit3 = true;
                                     } else {
                                         System.out.println("Element does not exist");
